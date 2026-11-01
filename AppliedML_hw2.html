@@ -107,7 +107,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="6cdece85" class="cell" data-execution_count="57">
+<div id="6cdece85" class="cell" data-execution_count="95">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> platform</span>
@@ -149,7 +149,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code>Dataset shape: (41188, 21)</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="57">
+<div class="cell-output cell-output-display" data-execution_count="95">
 <div>
 
 
@@ -310,7 +310,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="explore" class="level2">
 <h2 class="anchored" data-anchor-id="explore">Explore</h2>
-<div id="785c6f01" class="cell" data-execution_count="58">
+<div id="785c6f01" class="cell" data-execution_count="96">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dataset dimensions</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Number of rows:"</span>, df.shape[<span class="dv">0</span>])</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Number of columns:"</span>, df.shape[<span class="dv">1</span>])</span>
@@ -416,7 +416,7 @@ Name: proportion, dtype: float64
 Positive-class proportion: 11.2654%</code></pre>
 </div>
 </div>
-<div id="01163ebd" class="cell" data-execution_count="59">
+<div id="01163ebd" class="cell" data-execution_count="97">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sns.countplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"y"</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Target Class Distribution"</span>)</span>
@@ -434,7 +434,7 @@ Positive-class proportion: 11.2654%</code></pre>
 </section>
 <section id="unknown-categorical-values" class="level2">
 <h2 class="anchored" data-anchor-id="unknown-categorical-values">Unknown categorical values</h2>
-<div id="34167d46" class="cell" data-execution_count="60">
+<div id="34167d46" class="cell" data-execution_count="98">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>categorical_cols <span class="op">=</span> df.select_dtypes(include<span class="op">=</span><span class="st">"object"</span>).columns.drop(<span class="st">"y"</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Unknown categorical values:</span><span class="ch">\n</span><span class="st">"</span>)</span>
@@ -454,7 +454,7 @@ housing: 990 (2.40%)
 loan: 990 (2.40%)</code></pre>
 </div>
 </div>
-<div id="1b90cc75" class="cell" data-execution_count="61">
+<div id="1b90cc75" class="cell" data-execution_count="99">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Number of pdays = 999:"</span>, (df[<span class="st">"pdays"</span>] <span class="op">==</span> <span class="dv">999</span>).<span class="bu">sum</span>())</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Percentage of pdays = 999:"</span>,</span>
@@ -468,7 +468,7 @@ Percentage of pdays = 999: 96.32%</code></pre>
 </section>
 <section id="clean-the-dataset" class="level2">
 <h2 class="anchored" data-anchor-id="clean-the-dataset">Clean the dataset</h2>
-<div id="3c890ea6" class="cell" data-execution_count="62">
+<div id="3c890ea6" class="cell" data-execution_count="100">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create indicator for whether the client was previously contacted</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"previously_contacted"</span>] <span class="op">=</span> (df[<span class="st">"pdays"</span>] <span class="op">!=</span> <span class="dv">999</span>).astype(<span class="bu">int</span>)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -501,7 +501,7 @@ Name: proportion, dtype: float64</code></pre>
 </section>
 <section id="create-trainvalidationtest-splits" class="level2">
 <h2 class="anchored" data-anchor-id="create-trainvalidationtest-splits">Create train/validation/test splits</h2>
-<div id="bc8900f0" class="cell" data-execution_count="63">
+<div id="bc8900f0" class="cell" data-execution_count="101">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First split: 70% training, 30% remaining</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>X_train, X_temp, y_train, y_temp <span class="op">=</span> train_test_split(</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    X,</span>
@@ -533,7 +533,7 @@ Test set: (6179, 20)</code></pre>
 </section>
 <section id="check-class-proportion" class="level2">
 <h2 class="anchored" data-anchor-id="check-class-proportion">Check class proportion</h2>
-<div id="5428d59d" class="cell" data-execution_count="64">
+<div id="5428d59d" class="cell" data-execution_count="102">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>split_summary <span class="op">=</span> pd.DataFrame({</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Dataset"</span>: [<span class="st">"Overall"</span>, <span class="st">"Training"</span>, <span class="st">"Validation"</span>, <span class="st">"Test"</span>],</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Rows"</span>: [<span class="bu">len</span>(y), <span class="bu">len</span>(y_train), <span class="bu">len</span>(y_val), <span class="bu">len</span>(y_test)],</span>
@@ -597,7 +597,7 @@ Test set: (6179, 20)</code></pre>
 </section>
 <section id="preprocessing" class="level2">
 <h2 class="anchored" data-anchor-id="preprocessing">Preprocessing</h2>
-<div id="b035d339" class="cell" data-execution_count="65">
+<div id="b035d339" class="cell" data-execution_count="103">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Identify numerical and categorical features</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>numeric_features <span class="op">=</span> X.select_dtypes(</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    include<span class="op">=</span>np.number</span>
@@ -620,7 +620,7 @@ Categorical features: 10
 ['job', 'marital', 'education', 'default', 'housing', 'loan', 'contact', 'month', 'day_of_week', 'poutcome']</code></pre>
 </div>
 </div>
-<div id="dad29a3a" class="cell" data-execution_count="66">
+<div id="dad29a3a" class="cell" data-execution_count="104">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Numerical preprocessing for GBDT</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>numeric_tree <span class="op">=</span> Pipeline([</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"imputer"</span>, SimpleImputer(strategy<span class="op">=</span><span class="st">"median"</span>))</span>
@@ -649,7 +649,7 @@ Categorical features: 10
 <span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"cat"</span>, categorical_pipeline, categorical_features)</span>
 <span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="908c6bc1" class="cell" data-execution_count="67">
+<div id="908c6bc1" class="cell" data-execution_count="105">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># GBDT preprocessing</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>X_train_gbdt <span class="op">=</span> preprocessor_gbdt.fit_transform(X_train)</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>X_val_gbdt <span class="op">=</span> preprocessor_gbdt.transform(X_val)</span>
@@ -686,7 +686,7 @@ Test: (6179, 63)</code></pre>
 <h1>Step 2 Gradient Boosted Trees (GBDT)</h1>
 <section id="define-the-function" class="level2">
 <h2 class="anchored" data-anchor-id="define-the-function">Define the function</h2>
-<div id="0e46b21d" class="cell" data-execution_count="68">
+<div id="0e46b21d" class="cell" data-execution_count="106">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> run_gbdt_experiment(</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    experiment_name,</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    learning_rate<span class="op">=</span><span class="fl">0.1</span>,</span>
@@ -744,7 +744,7 @@ Test: (6179, 63)</code></pre>
 </section>
 <section id="compare-learning-rates" class="level2">
 <h2 class="anchored" data-anchor-id="compare-learning-rates">Compare learning rates</h2>
-<div id="169cd982" class="cell" data-execution_count="69">
+<div id="169cd982" class="cell" data-execution_count="107">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>gbdt_models <span class="op">=</span> {}</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>gbdt_results <span class="op">=</span> []</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -771,15 +771,15 @@ Test: (6179, 63)</code></pre>
 <span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"Time = </span><span class="sc">{</span>results[<span class="st">'fit_time_seconds'</span>]<span class="sc">:.2f}</span><span class="ss">s"</span></span>
 <span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>learning_rate_0.01: AP = 0.4884, Best iteration = 1019, Time = 3.23s
-learning_rate_0.1: AP = 0.4914, Best iteration = 254, Time = 0.82s
-learning_rate_0.3: AP = 0.4854, Best iteration = 39, Time = 0.18s</code></pre>
+<pre><code>learning_rate_0.01: AP = 0.4884, Best iteration = 1019, Time = 2.76s
+learning_rate_0.1: AP = 0.4914, Best iteration = 254, Time = 0.67s
+learning_rate_0.3: AP = 0.4854, Best iteration = 39, Time = 0.17s</code></pre>
 </div>
 </div>
 </section>
 <section id="compare-tree-depth" class="level2">
 <h2 class="anchored" data-anchor-id="compare-tree-depth">Compare Tree Depth</h2>
-<div id="c6847abc" class="cell" data-execution_count="70">
+<div id="c6847abc" class="cell" data-execution_count="108">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>max_depths <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>]</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> depth <span class="kw">in</span> max_depths:</span>
@@ -803,16 +803,16 @@ learning_rate_0.3: AP = 0.4854, Best iteration = 39, Time = 0.18s</code></pre>
 <span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"Time = </span><span class="sc">{</span>results[<span class="st">'fit_time_seconds'</span>]<span class="sc">:.2f}</span><span class="ss">s"</span></span>
 <span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>max_depth_2: AP = 0.4838, Best iteration = 288, Time = 0.86s
-max_depth_4: AP = 0.4893, Best iteration = 118, Time = 0.42s
-max_depth_6: AP = 0.4920, Best iteration = 41, Time = 0.29s</code></pre>
+<pre><code>max_depth_2: AP = 0.4838, Best iteration = 288, Time = 0.66s
+max_depth_4: AP = 0.4893, Best iteration = 118, Time = 0.41s
+max_depth_6: AP = 0.4920, Best iteration = 41, Time = 0.25s</code></pre>
 </div>
 </div>
 </section>
 <section id="compare-regularization-subsample" class="level2">
 <h2 class="anchored" data-anchor-id="compare-regularization-subsample">Compare regularization (subsample)</h2>
 <p>The baseline (learning_rate=0.1, max_depth=3, subsample=0.8) was already trained as <code>learning_rate_0.1</code>, so subsample=0.8 is not re-run here (it would be an exact duplicate). Likewise, max_depth=3 in the depth comparison is that same baseline.</p>
-<div id="6a18d524" class="cell" data-execution_count="71">
+<div id="6a18d524" class="cell" data-execution_count="109">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>subsample_values <span class="op">=</span> [<span class="fl">0.6</span>, <span class="fl">1.0</span>]  </span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> sample <span class="kw">in</span> subsample_values:</span>
@@ -836,14 +836,14 @@ max_depth_6: AP = 0.4920, Best iteration = 41, Time = 0.29s</code></pre>
 <span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"Time = </span><span class="sc">{</span>results[<span class="st">'fit_time_seconds'</span>]<span class="sc">:.2f}</span><span class="ss">s"</span></span>
 <span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>subsample_0.6: AP = 0.4879, Best iteration = 212, Time = 0.68s
-subsample_1.0: AP = 0.4937, Best iteration = 189, Time = 0.54s</code></pre>
+<pre><code>subsample_0.6: AP = 0.4879, Best iteration = 212, Time = 0.59s
+subsample_1.0: AP = 0.4937, Best iteration = 189, Time = 0.49s</code></pre>
 </div>
 </div>
 </section>
 <section id="compare-all" class="level2">
 <h2 class="anchored" data-anchor-id="compare-all">Compare all</h2>
-<div id="02156169" class="cell" data-execution_count="72">
+<div id="02156169" class="cell" data-execution_count="110">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>gbdt_results_df <span class="op">=</span> pd.DataFrame(gbdt_results)</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>gbdt_results_df <span class="op">=</span> gbdt_results_df.sort_values(</span>
@@ -884,7 +884,7 @@ subsample_1.0: AP = 0.4937, Best iteration = 189, Time = 0.54s</code></pre>
 <td>189</td>
 <td>0.4937</td>
 <td>0.2663</td>
-<td>0.5373</td>
+<td>0.4862</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">1</th>
@@ -896,7 +896,7 @@ subsample_1.0: AP = 0.4937, Best iteration = 189, Time = 0.54s</code></pre>
 <td>41</td>
 <td>0.4920</td>
 <td>0.2652</td>
-<td>0.2938</td>
+<td>0.2461</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">2</th>
@@ -908,7 +908,7 @@ subsample_1.0: AP = 0.4937, Best iteration = 189, Time = 0.54s</code></pre>
 <td>254</td>
 <td>0.4914</td>
 <td>0.2659</td>
-<td>0.8181</td>
+<td>0.6708</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">3</th>
@@ -920,7 +920,7 @@ subsample_1.0: AP = 0.4937, Best iteration = 189, Time = 0.54s</code></pre>
 <td>118</td>
 <td>0.4893</td>
 <td>0.2662</td>
-<td>0.4204</td>
+<td>0.4105</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">4</th>
@@ -932,7 +932,7 @@ subsample_1.0: AP = 0.4937, Best iteration = 189, Time = 0.54s</code></pre>
 <td>1019</td>
 <td>0.4884</td>
 <td>0.2672</td>
-<td>3.2266</td>
+<td>2.7627</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">5</th>
@@ -944,7 +944,7 @@ subsample_1.0: AP = 0.4937, Best iteration = 189, Time = 0.54s</code></pre>
 <td>212</td>
 <td>0.4879</td>
 <td>0.2665</td>
-<td>0.6792</td>
+<td>0.5922</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">6</th>
@@ -956,7 +956,7 @@ subsample_1.0: AP = 0.4937, Best iteration = 189, Time = 0.54s</code></pre>
 <td>39</td>
 <td>0.4854</td>
 <td>0.2678</td>
-<td>0.1837</td>
+<td>0.1744</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">7</th>
@@ -968,7 +968,7 @@ subsample_1.0: AP = 0.4937, Best iteration = 189, Time = 0.54s</code></pre>
 <td>288</td>
 <td>0.4838</td>
 <td>0.2669</td>
-<td>0.8641</td>
+<td>0.6595</td>
 </tr>
 </tbody>
 </table>
@@ -979,7 +979,7 @@ subsample_1.0: AP = 0.4937, Best iteration = 189, Time = 0.54s</code></pre>
 </section>
 <section id="select-the-best-model" class="level2">
 <h2 class="anchored" data-anchor-id="select-the-best-model">Select the best model</h2>
-<div id="0f1153ab" class="cell" data-execution_count="73">
+<div id="0f1153ab" class="cell" data-execution_count="111">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>best_gbdt_result <span class="op">=</span> gbdt_results_df.iloc[<span class="dv">0</span>]</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>best_gbdt_name <span class="op">=</span> best_gbdt_result[<span class="st">"experiment"</span>]</span>
@@ -1000,7 +1000,7 @@ reg_lambda                      1.0
 best_iteration                  189
 validation_AP              0.493672
 validation_logloss         0.266273
-fit_time_seconds           0.537302
+fit_time_seconds           0.486179
 Name: 0, dtype: object
 
 Selected model: subsample_1.0
@@ -1010,7 +1010,7 @@ Best boosting iteration: 189</code></pre>
 </section>
 <section id="plot-training-vs-validation-log-loss" class="level2">
 <h2 class="anchored" data-anchor-id="plot-training-vs-validation-log-loss">Plot training vs validation log loss</h2>
-<div id="33d59f1c" class="cell" data-execution_count="74">
+<div id="33d59f1c" class="cell" data-execution_count="112">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>evals_result <span class="op">=</span> best_gbdt_model.evals_result()</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>train_loss <span class="op">=</span> evals_result[<span class="st">"validation_0"</span>][<span class="st">"logloss"</span>]</span>
@@ -1045,7 +1045,7 @@ Best boosting iteration: 189</code></pre>
 </section>
 <section id="plot-feature-importance" class="level2">
 <h2 class="anchored" data-anchor-id="plot-feature-importance">Plot Feature Importance</h2>
-<div id="a78ed74e" class="cell" data-execution_count="75">
+<div id="a78ed74e" class="cell" data-execution_count="113">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get transformed feature names</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>feature_names <span class="op">=</span> preprocessor_gbdt.get_feature_names_out()</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1099,7 +1099,7 @@ Best boosting iteration: 189</code></pre>
 <h1>Step 3 Multi-Layer Perceptron (MLP)</h1>
 <section id="define-a-function" class="level2">
 <h2 class="anchored" data-anchor-id="define-a-function">Define a function</h2>
-<div id="2d230909" class="cell" data-execution_count="76">
+<div id="2d230909" class="cell" data-execution_count="114">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> run_mlp_experiment(</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    experiment_name,</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    hidden_layer_sizes<span class="op">=</span>(<span class="dv">128</span>, <span class="dv">64</span>),</span>
@@ -1159,7 +1159,7 @@ Best boosting iteration: 189</code></pre>
 </section>
 <section id="compare-network-architectures" class="level2">
 <h2 class="anchored" data-anchor-id="compare-network-architectures">Compare network architectures</h2>
-<div id="b29cdb4d" class="cell" data-execution_count="77">
+<div id="b29cdb4d" class="cell" data-execution_count="115">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>mlp_models <span class="op">=</span> {}</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>mlp_results <span class="op">=</span> []</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1191,15 +1191,15 @@ Best boosting iteration: 189</code></pre>
 <span id="cb33-29"><a href="#cb33-29" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"Convergence warning = </span><span class="sc">{</span>results[<span class="st">'convergence_warning'</span>]<span class="sc">}</span><span class="ss">"</span></span>
 <span id="cb33-30"><a href="#cb33-30" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>architecture_(64,): AP = 0.4279, Iterations = 300, Time = 17.85s, Convergence warning = True
-architecture_(128, 64): AP = 0.3196, Iterations = 300, Time = 46.30s, Convergence warning = True
-architecture_(128, 64, 32): AP = 0.3299, Iterations = 226, Time = 38.45s, Convergence warning = False</code></pre>
+<pre><code>architecture_(64,): AP = 0.4279, Iterations = 300, Time = 20.51s, Convergence warning = True
+architecture_(128, 64): AP = 0.3196, Iterations = 300, Time = 59.10s, Convergence warning = True
+architecture_(128, 64, 32): AP = 0.3299, Iterations = 226, Time = 38.98s, Convergence warning = False</code></pre>
 </div>
 </div>
 </section>
 <section id="compare-learning-rates-1" class="level2">
 <h2 class="anchored" data-anchor-id="compare-learning-rates-1">Compare Learning Rates</h2>
-<div id="982af873" class="cell" data-execution_count="78">
+<div id="982af873" class="cell" data-execution_count="116">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>learning_rates_mlp <span class="op">=</span> [<span class="fl">0.0003</span>, <span class="fl">0.003</span>, <span class="fl">0.01</span>]</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> lr <span class="kw">in</span> learning_rates_mlp:</span>
@@ -1224,15 +1224,15 @@ architecture_(128, 64, 32): AP = 0.3299, Iterations = 226, Time = 38.45s, Conver
 <span id="cb35-22"><a href="#cb35-22" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"Convergence warning = </span><span class="sc">{</span>results[<span class="st">'convergence_warning'</span>]<span class="sc">}</span><span class="ss">"</span></span>
 <span id="cb35-23"><a href="#cb35-23" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>learning_rate_0.0003: AP = 0.4001, Iterations = 300, Time = 41.74s, Convergence warning = True
-learning_rate_0.003: AP = 0.3040, Iterations = 161, Time = 22.01s, Convergence warning = False
-learning_rate_0.01: AP = 0.3302, Iterations = 131, Time = 16.15s, Convergence warning = False</code></pre>
+<pre><code>learning_rate_0.0003: AP = 0.4001, Iterations = 300, Time = 48.88s, Convergence warning = True
+learning_rate_0.003: AP = 0.3040, Iterations = 161, Time = 21.64s, Convergence warning = False
+learning_rate_0.01: AP = 0.3302, Iterations = 131, Time = 15.51s, Convergence warning = False</code></pre>
 </div>
 </div>
 </section>
 <section id="compare-l2-reg-alpha" class="level2">
 <h2 class="anchored" data-anchor-id="compare-l2-reg-alpha">Compare L2 Reg (alpha)</h2>
-<div id="e36aef86" class="cell" data-execution_count="79">
+<div id="e36aef86" class="cell" data-execution_count="117">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>alpha_values <span class="op">=</span> [<span class="fl">0.001</span>, <span class="fl">0.1</span>, <span class="fl">1.0</span>, <span class="fl">5.0</span>]  </span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> alpha_value <span class="kw">in</span> alpha_values:</span>
@@ -1257,16 +1257,16 @@ learning_rate_0.01: AP = 0.3302, Iterations = 131, Time = 16.15s, Convergence wa
 <span id="cb37-22"><a href="#cb37-22" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"Convergence warning = </span><span class="sc">{</span>results[<span class="st">'convergence_warning'</span>]<span class="sc">}</span><span class="ss">"</span></span>
 <span id="cb37-23"><a href="#cb37-23" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>alpha_0.001: AP = 0.3255, Iterations = 300, Time = 42.37s, Convergence warning = True
-alpha_0.1: AP = 0.3664, Iterations = 190, Time = 25.62s, Convergence warning = False
+<pre><code>alpha_0.001: AP = 0.3255, Iterations = 300, Time = 40.17s, Convergence warning = True
+alpha_0.1: AP = 0.3664, Iterations = 190, Time = 28.22s, Convergence warning = False
 alpha_1.0: AP = 0.4777, Iterations = 118, Time = 14.90s, Convergence warning = False
-alpha_5.0: AP = 0.4645, Iterations = 74, Time = 8.56s, Convergence warning = False</code></pre>
+alpha_5.0: AP = 0.4645, Iterations = 74, Time = 8.57s, Convergence warning = False</code></pre>
 </div>
 </div>
 </section>
 <section id="compare-all-1" class="level2">
 <h2 class="anchored" data-anchor-id="compare-all-1">Compare all</h2>
-<div id="e8aa2b3f" class="cell" data-execution_count="80">
+<div id="e8aa2b3f" class="cell" data-execution_count="118">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>mlp_results_df <span class="op">=</span> pd.DataFrame(mlp_results)</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>mlp_results_df <span class="op">=</span> mlp_results_df.sort_values(</span>
@@ -1306,7 +1306,7 @@ alpha_5.0: AP = 0.4645, Iterations = 74, Time = 8.56s, Convergence warning = Fal
 <td>0.2679</td>
 <td>0.4777</td>
 <td>0.2714</td>
-<td>14.8955</td>
+<td>14.9049</td>
 <td>False</td>
 </tr>
 <tr class="even">
@@ -1319,7 +1319,7 @@ alpha_5.0: AP = 0.4645, Iterations = 74, Time = 8.56s, Convergence warning = Fal
 <td>0.2893</td>
 <td>0.4645</td>
 <td>0.2752</td>
-<td>8.5618</td>
+<td>8.5720</td>
 <td>False</td>
 </tr>
 <tr class="odd">
@@ -1332,7 +1332,7 @@ alpha_5.0: AP = 0.4645, Iterations = 74, Time = 8.56s, Convergence warning = Fal
 <td>0.2261</td>
 <td>0.4279</td>
 <td>0.2964</td>
-<td>17.8454</td>
+<td>20.5125</td>
 <td>True</td>
 </tr>
 <tr class="even">
@@ -1345,7 +1345,7 @@ alpha_5.0: AP = 0.4645, Iterations = 74, Time = 8.56s, Convergence warning = Fal
 <td>0.1762</td>
 <td>0.4001</td>
 <td>0.3484</td>
-<td>41.7441</td>
+<td>48.8844</td>
 <td>True</td>
 </tr>
 <tr class="odd">
@@ -1358,7 +1358,7 @@ alpha_5.0: AP = 0.4645, Iterations = 74, Time = 8.56s, Convergence warning = Fal
 <td>0.1639</td>
 <td>0.3664</td>
 <td>0.4252</td>
-<td>25.6188</td>
+<td>28.2156</td>
 <td>False</td>
 </tr>
 <tr class="even">
@@ -1371,7 +1371,7 @@ alpha_5.0: AP = 0.4645, Iterations = 74, Time = 8.56s, Convergence warning = Fal
 <td>0.0561</td>
 <td>0.3302</td>
 <td>1.1931</td>
-<td>16.1504</td>
+<td>15.5118</td>
 <td>False</td>
 </tr>
 <tr class="odd">
@@ -1384,7 +1384,7 @@ alpha_5.0: AP = 0.4645, Iterations = 74, Time = 8.56s, Convergence warning = Fal
 <td>0.0610</td>
 <td>0.3299</td>
 <td>0.9903</td>
-<td>38.4526</td>
+<td>38.9757</td>
 <td>False</td>
 </tr>
 <tr class="even">
@@ -1397,7 +1397,7 @@ alpha_5.0: AP = 0.4645, Iterations = 74, Time = 8.56s, Convergence warning = Fal
 <td>0.0778</td>
 <td>0.3255</td>
 <td>0.6714</td>
-<td>42.3660</td>
+<td>40.1657</td>
 <td>True</td>
 </tr>
 <tr class="odd">
@@ -1410,7 +1410,7 @@ alpha_5.0: AP = 0.4645, Iterations = 74, Time = 8.56s, Convergence warning = Fal
 <td>0.0794</td>
 <td>0.3196</td>
 <td>0.6826</td>
-<td>46.2981</td>
+<td>59.0973</td>
 <td>True</td>
 </tr>
 <tr class="even">
@@ -1423,7 +1423,7 @@ alpha_5.0: AP = 0.4645, Iterations = 74, Time = 8.56s, Convergence warning = Fal
 <td>0.0572</td>
 <td>0.3040</td>
 <td>0.9485</td>
-<td>22.0099</td>
+<td>21.6356</td>
 <td>False</td>
 </tr>
 </tbody>
@@ -1435,7 +1435,7 @@ alpha_5.0: AP = 0.4645, Iterations = 74, Time = 8.56s, Convergence warning = Fal
 </section>
 <section id="check-warning" class="level2">
 <h2 class="anchored" data-anchor-id="check-warning">Check warning</h2>
-<div id="af4e0521" class="cell" data-execution_count="81">
+<div id="af4e0521" class="cell" data-execution_count="119">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Convergence warning summary:"</span>)</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
@@ -1468,7 +1468,7 @@ Number of experiments with convergence warnings: 4</code></pre>
 </section>
 <section id="select-the-best-model-1" class="level2">
 <h2 class="anchored" data-anchor-id="select-the-best-model-1">Select the best model</h2>
-<div id="1b26f9e7" class="cell" data-execution_count="82">
+<div id="1b26f9e7" class="cell" data-execution_count="120">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>best_mlp_result <span class="op">=</span> mlp_results_df.iloc[<span class="dv">0</span>]</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>best_mlp_name <span class="op">=</span> best_mlp_result[<span class="st">"experiment"</span>]</span>
@@ -1491,7 +1491,7 @@ n_iter                       118
 training_loss           0.267859
 validation_AP           0.477732
 validation_logloss      0.271357
-fit_time_seconds       14.895504
+fit_time_seconds       14.904904
 convergence_warning        False
 Name: 0, dtype: object
 
@@ -1501,7 +1501,7 @@ Iterations: 118
 Convergence warning: False</code></pre>
 </div>
 </div>
-<div id="bfb874df" class="cell" data-execution_count="83">
+<div id="bfb874df" class="cell" data-execution_count="121">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>plt.plot(</span>
@@ -1527,7 +1527,7 @@ Convergence warning: False</code></pre>
 </section>
 <section id="plot-validation-performance-versus-architecture" class="level2">
 <h2 class="anchored" data-anchor-id="plot-validation-performance-versus-architecture">Plot validation performance versus architecture</h2>
-<div id="ebda3d5a" class="cell" data-execution_count="84">
+<div id="ebda3d5a" class="cell" data-execution_count="122">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>architecture_results <span class="op">=</span> mlp_results_df[</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>    mlp_results_df[<span class="st">"experiment"</span>].<span class="bu">str</span>.startswith(<span class="st">"architecture_"</span>)</span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>].copy()</span>
@@ -1565,7 +1565,7 @@ Convergence warning: False</code></pre>
 <td>0.4279</td>
 <td>0.2964</td>
 <td>300</td>
-<td>17.8454</td>
+<td>20.5125</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">6</th>
@@ -1573,7 +1573,7 @@ Convergence warning: False</code></pre>
 <td>0.3299</td>
 <td>0.9903</td>
 <td>226</td>
-<td>38.4526</td>
+<td>38.9757</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">8</th>
@@ -1581,7 +1581,7 @@ Convergence warning: False</code></pre>
 <td>0.3196</td>
 <td>0.6826</td>
 <td>300</td>
-<td>46.2981</td>
+<td>59.0973</td>
 </tr>
 </tbody>
 </table>
@@ -1589,7 +1589,7 @@ Convergence warning: False</code></pre>
 </div>
 </div>
 </div>
-<div id="f2d8218b" class="cell" data-execution_count="85">
+<div id="f2d8218b" class="cell" data-execution_count="123">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">5</span>))</span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>plt.bar(</span>
@@ -1613,7 +1613,7 @@ Convergence warning: False</code></pre>
 </section>
 <section id="experiment-summary" class="level2">
 <h2 class="anchored" data-anchor-id="experiment-summary">Experiment summary</h2>
-<div id="87d48ab0" class="cell" data-execution_count="86">
+<div id="87d48ab0" class="cell" data-execution_count="124">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>display(</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>    mlp_results_df[</span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>        [</span>
@@ -1652,7 +1652,7 @@ Convergence warning: False</code></pre>
 <td>0.0010</td>
 <td>1.0000</td>
 <td>0.4777</td>
-<td>14.8955</td>
+<td>14.9049</td>
 <td>False</td>
 </tr>
 <tr class="even">
@@ -1662,7 +1662,7 @@ Convergence warning: False</code></pre>
 <td>0.0010</td>
 <td>5.0000</td>
 <td>0.4645</td>
-<td>8.5618</td>
+<td>8.5720</td>
 <td>False</td>
 </tr>
 <tr class="odd">
@@ -1672,7 +1672,7 @@ Convergence warning: False</code></pre>
 <td>0.0010</td>
 <td>0.0001</td>
 <td>0.4279</td>
-<td>17.8454</td>
+<td>20.5125</td>
 <td>True</td>
 </tr>
 <tr class="even">
@@ -1682,7 +1682,7 @@ Convergence warning: False</code></pre>
 <td>0.0003</td>
 <td>0.0001</td>
 <td>0.4001</td>
-<td>41.7441</td>
+<td>48.8844</td>
 <td>True</td>
 </tr>
 <tr class="odd">
@@ -1692,7 +1692,7 @@ Convergence warning: False</code></pre>
 <td>0.0010</td>
 <td>0.1000</td>
 <td>0.3664</td>
-<td>25.6188</td>
+<td>28.2156</td>
 <td>False</td>
 </tr>
 <tr class="even">
@@ -1702,7 +1702,7 @@ Convergence warning: False</code></pre>
 <td>0.0100</td>
 <td>0.0001</td>
 <td>0.3302</td>
-<td>16.1504</td>
+<td>15.5118</td>
 <td>False</td>
 </tr>
 <tr class="odd">
@@ -1712,7 +1712,7 @@ Convergence warning: False</code></pre>
 <td>0.0010</td>
 <td>0.0001</td>
 <td>0.3299</td>
-<td>38.4526</td>
+<td>38.9757</td>
 <td>False</td>
 </tr>
 <tr class="even">
@@ -1722,7 +1722,7 @@ Convergence warning: False</code></pre>
 <td>0.0010</td>
 <td>0.0010</td>
 <td>0.3255</td>
-<td>42.3660</td>
+<td>40.1657</td>
 <td>True</td>
 </tr>
 <tr class="odd">
@@ -1732,7 +1732,7 @@ Convergence warning: False</code></pre>
 <td>0.0010</td>
 <td>0.0001</td>
 <td>0.3196</td>
-<td>46.2981</td>
+<td>59.0973</td>
 <td>True</td>
 </tr>
 <tr class="even">
@@ -1742,7 +1742,7 @@ Convergence warning: False</code></pre>
 <td>0.0030</td>
 <td>0.0001</td>
 <td>0.3040</td>
-<td>22.0099</td>
+<td>21.6356</td>
 <td>False</td>
 </tr>
 </tbody>
@@ -1755,7 +1755,7 @@ Convergence warning: False</code></pre>
 </section>
 <section id="step-4-model-evaluation-comparison" class="level1">
 <h1>Step 4 Model Evaluation &amp; Comparison</h1>
-<div id="e1bbf15b" class="cell" data-execution_count="87">
+<div id="e1bbf15b" class="cell" data-execution_count="125">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"===== SELECTED GBDT MODEL ====="</span>)</span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Configuration:"</span>, best_gbdt_name)</span>
 <span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Parameters:"</span>, best_gbdt_model.get_params())</span>
@@ -1783,7 +1783,7 @@ Validation AP: 0.477731740505429</code></pre>
 </div>
 <section id="test-predictions" class="level2">
 <h2 class="anchored" data-anchor-id="test-predictions">Test predictions</h2>
-<div id="6bfc6363" class="cell" data-execution_count="88">
+<div id="6bfc6363" class="cell" data-execution_count="126">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># GBDT test predictions</span></span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>gbdt_test_prob <span class="op">=</span> best_gbdt_model.predict_proba(X_test_gbdt)[:, <span class="dv">1</span>]</span>
 <span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>gbdt_test_pred <span class="op">=</span> (gbdt_test_prob <span class="op">&gt;=</span> <span class="fl">0.5</span>).astype(<span class="bu">int</span>)</span>
@@ -1795,7 +1795,7 @@ Validation AP: 0.477731740505429</code></pre>
 </section>
 <section id="metrics" class="level2">
 <h2 class="anchored" data-anchor-id="metrics">Metrics</h2>
-<div id="dd1fc769" class="cell" data-execution_count="89">
+<div id="dd1fc769" class="cell" data-execution_count="127">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate metrics for GBDT</span></span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>gbdt_metrics <span class="op">=</span> {</span>
 <span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Accuracy"</span>: accuracy_score(y_test, gbdt_test_pred),</span>
@@ -1814,7 +1814,7 @@ Validation AP: 0.477731740505429</code></pre>
 <span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"AP"</span>: average_precision_score(y_test, mlp_test_prob)</span>
 <span id="cb51-17"><a href="#cb51-17" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="a23a0160" class="cell" data-execution_count="90">
+<div id="a23a0160" class="cell" data-execution_count="128">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>comparison_df <span class="op">=</span> pd.DataFrame(</span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>    [gbdt_metrics, mlp_metrics],</span>
 <span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>    index<span class="op">=</span>[<span class="st">"GBDT (XGBoost)"</span>, <span class="st">"MLP"</span>]</span>
@@ -1872,7 +1872,7 @@ Validation AP: 0.477731740505429</code></pre>
 </section>
 <section id="plot-precision-recall-curves" class="level2">
 <h2 class="anchored" data-anchor-id="plot-precision-recall-curves">Plot Precision-Recall curves</h2>
-<div id="817ac2fd" class="cell" data-execution_count="91">
+<div id="817ac2fd" class="cell" data-execution_count="129">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate precision and recall at different thresholds</span></span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>gbdt_precision, gbdt_recall, _ <span class="op">=</span> precision_recall_curve(</span>
 <span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>    y_test, gbdt_test_prob</span>
@@ -1931,7 +1931,7 @@ Validation AP: 0.477731740505429</code></pre>
 </section>
 <section id="plot-confusion-matrix" class="level2">
 <h2 class="anchored" data-anchor-id="plot-confusion-matrix">Plot confusion matrix</h2>
-<div id="1a6927a3" class="cell" data-execution_count="92">
+<div id="1a6927a3" class="cell" data-execution_count="130">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">5</span>))</span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>gbdt_cm <span class="op">=</span> confusion_matrix(y_test, gbdt_test_pred)</span>
@@ -1978,7 +1978,7 @@ Validation AP: 0.477731740505429</code></pre>
 </section>
 <section id="compare-time" class="level2">
 <h2 class="anchored" data-anchor-id="compare-time">Compare time</h2>
-<div id="151815cf" class="cell" data-execution_count="93">
+<div id="151815cf" class="cell" data-execution_count="131">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>gbdt_fit_time <span class="op">=</span> best_gbdt_result[<span class="st">"fit_time_seconds"</span>]</span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>mlp_fit_time <span class="op">=</span> best_mlp_result[<span class="st">"fit_time_seconds"</span>]</span>
 <span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2045,14 +2045,14 @@ Validation AP: 0.477731740505429</code></pre>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">0</th>
 <td>GBDT (XGBoost)</td>
-<td>0.1099</td>
-<td>0.5373</td>
+<td>0.0871</td>
+<td>0.4862</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">1</th>
 <td>MLP</td>
-<td>0.0826</td>
-<td>14.8955</td>
+<td>0.0793</td>
+<td>14.9049</td>
 </tr>
 </tbody>
 </table>
@@ -2063,7 +2063,7 @@ Validation AP: 0.477731740505429</code></pre>
 </section>
 <section id="hardware-seeds-package" class="level2">
 <h2 class="anchored" data-anchor-id="hardware-seeds-package">Hardware, seeds, package</h2>
-<div id="5c420e37" class="cell" data-execution_count="94">
+<div id="5c420e37" class="cell" data-execution_count="132">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"===== EXPERIMENTAL ENVIRONMENT ====="</span>)</span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Python:"</span>, platform.python_version())</span>
